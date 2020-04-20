@@ -1,3 +1,6 @@
+/*PROLIMORFISMO (PRINCIPIO DE SUSTITUCION): se puede utilizar un objeto de la SUB_CLASE siempre y
+ cuando el programa espere un objeto de la SUPER_CLASE.*/
+
 package app;
 
 import java.util.*;
@@ -15,11 +18,20 @@ public class Uso_Empleado{
 
         // String[] miarreglo=new String[5];
 
-         Empleado[] misEmpleados = new Empleado[4];
+
+        Jefe RRHH = new Jefe("juan", 55000, 2006, 9, 25);
+        RRHH.setIncentivo(2570);
+
+         Empleado[] misEmpleados = new Empleado[6];
         misEmpleados[0] = new Empleado("Paco Gomez", 85000, 1990, 12, 17);
         misEmpleados[1] = new Empleado("Anna Lopez", 95000, 1995, 06, 02);
         misEmpleados[2] = new Empleado("Maria MArtin", 105000, 2002, 03, 15);
         misEmpleados[3] = new Empleado("tayron lizano");
+        misEmpleados[4] = RRHH; //polimosfismo en acción.
+        misEmpleados[5] = new Jefe("Maria", 95000, 1999, 5, 26);
+        Jefe jefa_Finanzas=(Jefe) misEmpleados[5]; //refundicion de objetos
+        jefa_Finanzas.setIncentivo(2570);
+
 
         for ( Empleado e : misEmpleados) {
             e.setAumento(5);
@@ -31,6 +43,12 @@ public class Uso_Empleado{
         }
     }
 }
+
+/*
+============================
+       CLASE EMPLEADOS
+============================
+*/
 
 class Empleado {
     public Empleado( String nombre,  double sueldo,  int anio,  int mes,  int dia) {
@@ -67,12 +85,22 @@ class Empleado {
     private Date f_contrato;
 }
 
+/*
+========================
+       CLASE JEFE
+========================
+*/
+
 class Jefe extends Empleado {
     private  double incentivo;
 
     public Jefe( String nombre,  double sueldo,  int anio,  int mes,  int dia) {
         super(nombre, sueldo, anio, mes, dia);
-        incentivo=2100;
+        
+    }
+
+    public void setIncentivo(double incentivo){
+        this.incentivo=incentivo;
     }
 
     public double getSueldo(){
