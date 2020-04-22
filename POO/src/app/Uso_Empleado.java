@@ -22,7 +22,7 @@ public class Uso_Empleado{
         Jefe RRHH = new Jefe("juan", 55000, 2006, 9, 25);
         RRHH.setIncentivo(2570);
 
-         Empleado[] misEmpleados = new Empleado[6];
+        Empleado[] misEmpleados = new Empleado[6];
         misEmpleados[0] = new Empleado("Paco Gomez", 85000, 1990, 12, 17);
         misEmpleados[1] = new Empleado("Anna Lopez", 95000, 1995, 06, 02);
         misEmpleados[2] = new Empleado("Maria MArtin", 105000, 2002, 03, 15);
@@ -37,6 +37,8 @@ public class Uso_Empleado{
             e.setAumento(5);
         }
 
+        Arrays.sort(misEmpleados);
+
         for ( Empleado e : misEmpleados) {
             System.out.println("Nombre: " + e.getNombre() + " Sueldo: " + e.getSueldo() + " Fecha_Contrato: "
                     + e.getFechaContrato());
@@ -50,7 +52,7 @@ public class Uso_Empleado{
 ============================
 */
 
-class Empleado {
+class Empleado implements Comparable {
     public Empleado( String nombre,  double sueldo,  int anio,  int mes,  int dia) {
         this.nombre = nombre;
         this.sueldo = sueldo;
@@ -80,6 +82,18 @@ class Empleado {
     public void setAumento( double porcentaje) {
          double aumento = sueldo * porcentaje / 100;
         sueldo += aumento;
+    }
+
+    public int compareTo(Object o){
+        Empleado otroEmpledao = (Empleado) o;
+
+        if(this.id<otroEmpledao.id){
+            return -1;
+        }else if(this.sueldo>otroEmpledao.sueldo){
+            return 1;
+        }else{
+            return 0;
+        }
     }
 
     private  String nombre;
