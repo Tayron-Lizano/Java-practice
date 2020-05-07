@@ -33,11 +33,14 @@ public class Uso_Empleado{
         jefa_Finanzas.setIncentivo(2570);
 
 
+
+
+
         for ( Empleado e : misEmpleados) {
             e.setAumento(5);
         }
 
-        
+        Arrays.sort(misEmpleados);
 
         for ( Empleado e : misEmpleados) {
             System.out.println("Nombre: " + e.getNombre() + " Sueldo: " + e.getSueldo() + " Fecha_Contrato: "
@@ -52,7 +55,7 @@ public class Uso_Empleado{
 ============================
 */
 
-class Empleado {
+class Empleado implements Comparable{
     public Empleado( String nombre,  double sueldo,  int anio,  int mes,  int dia) {
         this.nombre = nombre;
         this.sueldo = sueldo;
@@ -82,6 +85,18 @@ class Empleado {
     public void setAumento( double porcentaje) {
          double aumento = sueldo * porcentaje / 100;
         sueldo += aumento;
+    }
+
+    public int compareTo(Object o){
+        Empleado otroEmpleado=(Empleado) o;
+
+        if(this.sueldo<otroEmpleado.sueldo){
+            return -1;
+        }else if(this.sueldo>otroEmpleado.sueldo){
+            return 1;
+        }
+
+        return 0;
     }
 
     
