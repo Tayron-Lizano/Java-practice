@@ -35,6 +35,9 @@ public class Uso_Empleado{
         //Comparable ejemplo = new Comparable();
         Comparable ejemplo = new Empleado("Paula", 75000, 1993, 12, 20);
 
+        /*=================================
+           Implementacion de INSTANCEOF 
+        ===================================*/
         if(jefa_Finanzas instanceof Empleado){
             System.out.println("la instancia pertenece a empleado.");
         }
@@ -43,6 +46,8 @@ public class Uso_Empleado{
             System.out.println("la instancia es de tipo Comparable.");
         }
 
+        /*probando metos tomar decisiones de la interfaz Jefes*/
+        System.out.println(jefa_Finanzas.TomaDecisiones("darlemas vacaciones a los empleados."));
 
 
         for ( Empleado e : misEmpleados) {
@@ -123,7 +128,7 @@ class Empleado implements Comparable{
 ========================
 */
 
-class Jefe extends Empleado {
+class Jefe extends Empleado implements Jefes{
     private  double incentivo;
 
     public Jefe( String nombre,  double sueldo,  int anio,  int mes,  int dia) {
@@ -139,5 +144,9 @@ class Jefe extends Empleado {
         double sueldo_jefe=super.getSueldo();
         sueldo_jefe+=incentivo;
         return sueldo_jefe;
+    }
+
+    public String TomaDecisiones(String decision){
+        return "Esta instancia de jefe ha decidido de tomar la decisión de "+decision;
     }
 }
