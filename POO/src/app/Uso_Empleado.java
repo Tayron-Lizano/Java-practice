@@ -32,7 +32,16 @@ public class Uso_Empleado{
         Jefe jefa_Finanzas=(Jefe) misEmpleados[5]; //refundicion de objetos
         jefa_Finanzas.setIncentivo(2570);
 
+        //Comparable ejemplo = new Comparable();
+        Comparable ejemplo = new Empleado("Paula", 75000, 1993, 12, 20);
 
+        if(jefa_Finanzas instanceof Empleado){
+            System.out.println("la instancia pertenece a empleado.");
+        }
+
+        if(ejemplo instanceof Comparable){
+            System.out.println("la instancia es de tipo Comparable.");
+        }
 
 
 
