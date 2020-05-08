@@ -48,6 +48,10 @@ public class Uso_Empleado{
 
         /*probando metos tomar decisiones de la interfaz Jefes*/
         System.out.println(jefa_Finanzas.TomaDecisiones("darlemas vacaciones a los empleados."));
+        System.out.println("La jefa "+jefa_Finanzas.getNombre()+" tiene un bono de "+jefa_Finanzas.EstableceBono(3000));
+
+        /*PROBANDO HERENCIA DE INTERFAZ CON UN EMPLEADO NORMAL*/
+        System.out.println("El empleado "+misEmpleados[3].getNombre()+" tiene un bono de "+misEmpleados[3].EstableceBono(1500));
 
 
         for ( Empleado e : misEmpleados) {
@@ -69,7 +73,7 @@ public class Uso_Empleado{
 ============================
 */
 
-class Empleado implements Comparable{
+class Empleado implements Comparable, Trabajadores{
     public Empleado( String nombre,  double sueldo,  int anio,  int mes,  int dia) {
         this.nombre = nombre;
         this.sueldo = sueldo;
@@ -113,6 +117,10 @@ class Empleado implements Comparable{
         return 0;
     }
 
+    public double EstableceBono(double gratificacion){
+        return Trabajadores.bono_base+gratificacion;
+    }
+
     
 
     private  String nombre;
@@ -148,5 +156,10 @@ class Jefe extends Empleado implements Jefes{
 
     public String TomaDecisiones(String decision){
         return "Esta instancia de jefe ha decidido de tomar la decisión de "+decision;
+    }
+
+    public double EstableceBono(double gratificacion){
+        double prima=2000;
+        return Trabajadores.bono_base+prima+gratificacion;
     }
 }
