@@ -27,7 +27,7 @@ class Writing extends JFrame {
 }
 
 class Lamina extends JPanel{
-    public void painComponent(Graphics g){
+    public void paintComponent(Graphics g){
         super.paintComponent(g);
         g.drawString("Estamos escribiendo en el panel", 50, 50);
     }
