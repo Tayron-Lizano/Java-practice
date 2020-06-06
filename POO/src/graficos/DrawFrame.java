@@ -21,7 +21,5 @@ class MyFrame extends JFrame{
         Image icon = myScreen.getImage("src/graficos/icon.png");
         setIconImage(icon);
         setDefaultCloseOperation(3);
-        
-
     } 
 }
