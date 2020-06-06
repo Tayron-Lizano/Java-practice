@@ -1,11 +1,14 @@
 package graficos;
 
 import javax.swing.JFrame;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Toolkit;
 import java.awt.Image;
+import java.awt.SystemColor;
+
 import javax.swing.JPanel;
 import java.awt.geom.*;
 
@@ -15,7 +18,6 @@ public class Cubo{
     public static void main(String []args){
         MakeFrame drawCubo = new MakeFrame();
         drawCubo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
     }
 }
 
