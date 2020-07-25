@@ -25,7 +25,7 @@ class MakeFrameImage extends JFrame{
         setBounds(myScreen.width/4, myScreen.height/4, myScreen.width/2, myScreen.height/2);
         setVisible(true);
         setTitle("My App");
-        Image icon = myToolkit.getImage("src/graficos/icon.png");
+        Image icon = myToolkit.getImage("POO/src/graficos/icon.png");
         setIconImage(icon);
 
         MakeLaminaImage lamina = new MakeLaminaImage();
@@ -37,7 +37,7 @@ class MakeFrameImage extends JFrame{
 class MakeLaminaImage extends JPanel{
     public MakeLaminaImage(){
         try {
-            File myImg = new File("src/graficos/icon.png");
+            File myImg = new File("POO/src/graficos/icon.png");
             imge = ImageIO.read(myImg);
            
         } catch (Exception e) {
@@ -52,8 +52,8 @@ class MakeLaminaImage extends JPanel{
         int alto = imge.getHeight(this);
         g.drawImage(imge, 0, 0, null);
         
-        for(int i =0;i<300;i++){
-            for(int j =0;j<300;j++){
+        for(int i =0;i<5;i++){
+            for(int j =0;j<10;j++){
                 if(i+j>0){
                     g.copyArea(0, 0, ancho, alto, ancho*i, alto*j);
                 }
