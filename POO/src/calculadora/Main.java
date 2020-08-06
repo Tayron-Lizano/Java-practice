@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.awt.event.*;
 
 public class Main {
     public static void main(String []args){
@@ -17,27 +18,29 @@ public class Main {
 class FrameCalculator extends JFrame{
     public FrameCalculator(){
         setVisible(true);
-        setBounds(100, 100, 300, 300);
+        setBounds(100, 100, 250, 300);
         setTitle("calculator");
         setDefaultCloseOperation(3);
         setResizable(false);
 
-        add(new PanelCalulator(),BorderLayout.NORTH);
-        add(new PanelCalulator1(),BorderLayout.CENTER);
+        add(new PanelCalulator());
     }
 
 }
 
 class PanelCalulator extends JPanel{
+
+    JButton pantalla = new JButton("0");
+    JPanel lamina2 = new JPanel();
+
     public PanelCalulator(){
         setLayout(new BorderLayout());
-        JButton pantalla = new JButton("0");
+        pantalla.setEnabled(false);
         add(pantalla, BorderLayout.NORTH );
-    }
-}
-class PanelCalulator1 extends JPanel{
-    public PanelCalulator1(){
-        setLayout(new GridLayout(4, 4));
+
+        
+        lamina2.setLayout(new GridLayout(4,4));
+
         makeBoton("7");
         makeBoton("8");
         makeBoton("9");
@@ -58,9 +61,19 @@ class PanelCalulator1 extends JPanel{
         makeBoton("=");
         makeBoton("");
 
+        
+        add(lamina2, BorderLayout.CENTER);
+        
     }
 
-    private void makeBoton(String name){
-        add(new JButton(name));
+    private void makeBoton (String name){
+        lamina2.add(new JButton(name));
     }
+
+    private class InsertarNumero implements ActionListener{
+        public void actionPerformed(ActionEvent e){
+                String entrada= e.getActionCommand();
+                pantalla.setText(entrada);
+            }
+        }
 }
